@@ -1,0 +1,309 @@
+Create a modern, professional, responsive personal portfolio website for **Khalid Hawari**, an **AI & Robotics Engineering student from Jordan**.
+
+### Main Goal
+
+The website should present Khalid as a motivated robotics and AI developer who combines **robotics, artificial intelligence, embedded systems, ROS 2, simulation, and hands-on engineering projects**.
+
+The design should feel like a high-quality engineering/technology portfolio rather than a generic student website.
+
+### Visual Style
+
+* Modern futuristic technology aesthetic
+* Clean and professional
+* Dark theme as the primary theme
+* Subtle blue/cyan accent colors
+* Smooth animations and transitions
+* Minimal glassmorphism where appropriate
+* Professional typography
+* Lots of whitespace
+* Avoid excessive visual effects
+* Fully responsive on desktop, tablet, and mobile
+* Fast loading and accessible
+* Use subtle robotics/AI-inspired visual elements in the background
+
+### Hero Section
+
+Large headline:
+
+**Khalid Hawari**
+
+Subtitle:
+
+**AI & Robotics Engineering Student**
+
+Short description:
+
+"Building intelligent robotic systems through AI, ROS 2, embedded systems, simulation, and hands-on engineering."
+
+Add two primary buttons:
+
+**View My Projects**
+**Contact Me**
+
+Also include links/icons for:
+
+* LinkedIn
+* GitHub
+* Email
+
+Create a subtle animated robotics/AI visual next to the hero text, such as a robotic arm, autonomous robot, neural-network visualization, or futuristic technical grid.
+
+### About Section
+
+Introduce Khalid as a robotics student interested in combining hardware and artificial intelligence.
+
+Mention interests:
+
+* Robotics
+* Artificial Intelligence
+* Machine Learning
+* Deep Learning
+* ROS 2
+* Autonomous Robotics
+* Embedded Systems
+* PCB/Electronics
+* Robot Simulation
+
+Keep the text concise and professional.
+
+### Skills Section
+
+Create visually attractive categories.
+
+**Robotics & Software**
+
+* ROS 2
+* Python
+* C++
+* Linux
+* Git
+* Robotics Simulation
+* TF2
+* URDF
+* RViz
+* Gazebo
+* Nav2
+
+**AI & Data**
+
+* Python
+* Machine Learning
+* Deep Learning
+* Computer Vision
+* NumPy
+* OpenCV
+
+**Embedded & Electronics**
+
+* Arduino
+* ESP32
+* Sensors
+* Motor Drivers
+* PCB Design
+* KiCad
+* Embedded Systems
+* Electronics
+
+**Engineering**
+
+* SolidWorks
+* CAD
+* Mechanical Design
+* Robot Prototyping
+
+Represent skills with clean cards, icons, or proficiency indicators. Do not use misleading percentage bars.
+
+### Featured Projects
+
+Create a premium project showcase with large project cards.
+
+#### Project 1 — Striker X
+
+Category: Combat Robotics
+
+Describe it as a university robotics project focused on designing and building a powerful combat robot.
+
+Include:
+
+* Mechanical design
+* CAD
+* Chassis design
+* Weapon system
+* Drive system
+* Electronics
+* Team engineering
+
+Show a project image placeholder and buttons:
+**View Project**
+**GitHub**
+
+#### Project 2 — Autonomous Mobile Robot
+
+Category: ROS 2 / Autonomous Robotics
+
+Describe a differential-drive mobile robot developed using ROS 2.
+
+Technologies:
+
+* ROS 2 Jazzy
+* URDF
+* TF2
+* RViz2
+* Gazebo
+* ros2_control
+* Differential drive
+* LiDAR
+* Odometry
+* EKF
+* Nav2
+
+Show a simulation image placeholder.
+
+#### Project 3 — Self-Balancing Robot
+
+Category: Embedded Robotics
+
+Describe an Arduino-based two-wheel self-balancing robot using:
+
+* Arduino Uno
+* MPU6050
+* DC geared motors
+* L298 motor driver
+* PID control
+
+Show a project image placeholder.
+
+Make the project cards interactive with hover animations.
+
+### Experience / Learning Journey
+
+Create a timeline showing the development of Khalid's robotics skills.
+
+Possible milestones:
+
+* Robotics fundamentals
+* Arduino & embedded systems
+* Electronics and PCB design
+* ROS 2 fundamentals
+* Robot simulation
+* Autonomous robotics
+* Machine Learning
+* Deep Learning
+* Advanced robotics projects
+
+The timeline should communicate continuous learning and practical development.
+
+### Education
+
+Create a clean education section.
+
+**Jordan University of Science and Technology (JUST)**
+
+**B.Sc. Robotics Science**
+
+Include a short description focused on robotics, AI, engineering, and practical projects.
+
+### Certifications
+
+Create a certification section.
+
+Include:
+
+**Microsoft Azure AI Fundamentals — AI-900**
+
+Use a clean certificate card design.
+
+### GitHub / Technical Activity
+
+Create a section designed to display GitHub repositories or technical projects.
+
+Include:
+
+* Repository cards
+* Technologies used
+* Project descriptions
+* GitHub links
+
+If GitHub API integration is possible, structure the section so repositories can be connected dynamically later.
+
+### Contact Section
+
+Create a professional contact section.
+
+Headline:
+
+**Let's Build Something Intelligent**
+
+Text:
+
+"Interested in robotics, AI, or engineering projects? Feel free to get in touch."
+
+Include:
+
+* Email
+* LinkedIn
+* GitHub
+
+Add a simple contact form with:
+
+* Name
+* Email
+* Message
+* Send Message button
+
+### Navigation
+
+Sticky navigation bar with:
+
+**Khalid Hawari**
+
+* Home
+* About
+* Skills
+* Projects
+* Education
+* Certifications
+* Contact
+
+Add a mobile hamburger menu.
+
+### Footer
+
+Include:
+
+"Khalid Hawari — AI & Robotics Engineering"
+
+And links to LinkedIn, GitHub, and Email.
+
+### Technical Requirements
+
+* Build using React / Next.js
+* Use Tailwind CSS
+* Component-based architecture
+* Fully responsive
+* SEO-friendly
+* Semantic HTML
+* Smooth scrolling
+* Accessible navigation
+* Optimized images
+* Clean reusable components
+* Dark/light mode toggle
+* Add subtle scroll-reveal animations
+* Do not overuse animations
+* Do not use generic stock-photo people
+* Use project image placeholders that can easily be replaced later
+
+### Important Design Direction
+
+The final result should look like the portfolio of a **serious young robotics engineer/developer**, suitable for:
+
+* Internship applications
+* AI/Robotics jobs
+* Graduate programs
+* University opportunities
+* Robotics competitions
+* Technical networking
+
+Avoid making it look like a generic "student portfolio." Make the projects and technical skills the center of the website.
+
+Use polished micro-interactions, strong visual hierarchy, and a premium engineering/technology aesthetic.

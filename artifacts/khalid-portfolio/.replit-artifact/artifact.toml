@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Khalid Hawari Portfolio"
+description = "A responsive personal portfolio for Khalid Hawari, an AI and robotics engineering student from Jordan, showcasing robotics projects, technical skills, learning milestones, education, certification, and contact details."
+version = "1.0.0"
+id = "artifacts/khalid-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19781
+
+[services.development]
+run = "pnpm --filter @workspace/khalid-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/khalid-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/khalid-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19781"
+BASE_PATH = "/"
