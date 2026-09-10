@@ -67,14 +67,14 @@ const skills: { title: string; description: string; icon: IconType; tools: strin
 
 const projects = [
   {
-    id: 'striker-x',
+    id: 'spam-email-detector',
     number: '01',
-    name: 'Striker X',
-    type: 'Autonomous humanoid platform',
-    summary: 'A competition-minded humanoid robot concept built around perception, locomotion, and a clear decision loop.',
-    detail: 'Striker X explores how a compact robot can move from camera input to controlled action. The architecture connects a perception node to a behaviour layer and actuator control, with simulation used to validate the loop before hardware tests.',
-    tags: ['ROS 2', 'Python', 'Computer vision', 'Gazebo'],
-    visual: 'striker',
+    name: 'Spam Email Detector',
+    type: 'Natural language classification',
+    summary: 'An LSTM-based TensorFlow model that classifies messages as spam or ham from the SMS Spam Collection Dataset.',
+    detail: 'The UTF-16 CSV workflow covers lowercasing, URL and email removal, non-letter cleanup, tokenization, padding, and an embedding plus LSTM model with a dense binary output. The SMS Spam Collection Dataset contains 5,572 messages: 4,825 ham and 747 spam. The test set reached approximately 86.6% accuracy with 0.395 loss. Requirements include Python 3.11+, TensorFlow, Pandas, Seaborn, NumPy, and Matplotlib; run preprocess.py, then train_model.py.',
+    tags: ['TensorFlow', 'LSTM', 'Pandas', 'NumPy'],
+    visual: 'spam',
   },
   {
     id: 'amr',
@@ -95,6 +95,16 @@ const projects = [
     detail: 'This project is a practical study in control. An IMU feeds the balance loop while motor commands respond to the measured tilt, bringing together embedded code, mechanical intuition, and disciplined tuning.',
     tags: ['C++', 'IMU', 'PID control', 'Embedded'],
     visual: 'balance',
+  },
+  {
+    id: 'mnist-tensorflow',
+    number: '04',
+    name: 'MNIST TensorFlow Project',
+    type: 'Image classification study',
+    summary: 'A beginner-friendly TensorFlow project that classifies 28×28 grayscale handwritten digits from 0 to 9.',
+    detail: 'The model flattens each 28×28 grayscale image into a vector, passes it through a 128-neuron ReLU layer, and predicts 10 classes with a softmax output. It uses Adam, sparse categorical crossentropy, 10 epochs, and a batch size of 32, reaching approximately 99.7% train accuracy and 97.9% test accuracy. Error analysis visualizes wrong predictions, with most confusion between similar digits such as 2 and 7, 3 and 8, and 5 and 6. Accuracy and loss plots are saved in plots/accuracy.png and plots/loss.png, while wrong predictions are saved as plots/wrong_*.png.',
+    tags: ['TensorFlow', 'MNIST', 'Python', 'Matplotlib'],
+    visual: 'mnist',
   },
 ] as const;
 
@@ -202,21 +212,28 @@ function SectionHeading({ kicker, title, text, id }: { kicker: string; title: Re
 }
 
 function ProjectVisual({ type }: { type: string }) {
+  const visualNumber = type === 'spam' ? '01' : type === 'amr' ? '02' : type === 'balance' ? '03' : '04';
   return (
     <div className={`project-visual visual-${type}`} aria-label={`${type} technical placeholder visual`} role="img">
-      <div className="absolute left-4 top-4 project-signal">SYS.VISUAL / 0{type === 'striker' ? '1' : type === 'amr' ? '2' : '3'}</div>
+      <div className="absolute left-4 top-4 project-signal">SYS.VISUAL / {visualNumber}</div>
       <div className="absolute right-4 top-4 flex items-center gap-2 project-signal"><CircleDot size={10} /> LIVE MODEL</div>
       <div className="scanline" />
-      {type === 'striker' && (
-        <>
-          <div className="robot-head" /><div className="robot-body" /><div className="leg leg-l" /><div className="leg leg-r" />
-          <div className="wire" style={{ width: '28%', left: '10%', top: '47%', transform: 'rotate(-13deg)' }} />
-          <div className="wire" style={{ width: '23%', right: '7%', top: '31%', transform: 'rotate(22deg)' }} />
-          <div className="orbit-dot dot-a" /><div className="orbit-dot dot-b" /><div className="orbit-dot dot-c" />
-        </>
+      {type === 'spam' && (
+        <div className="spam-classifier">
+          <div className="spam-inbox"><span className="spam-message spam-message-muted" /><span className="spam-message" /><span className="spam-message spam-message-short" /><span className="spam-message spam-message-alert" /></div>
+          <div className="spam-arrow">→</div>
+          <div className="spam-output"><span className="spam-chip">HAM</span><span className="spam-chip spam-chip-alert">SPAM</span><small>binary output / LSTM</small></div>
+        </div>
       )}
       {type === 'amr' && <><div className="map-frame" /><div className="path" /><div className="amr-node node-start" /><div className="amr-node node-end" /><div className="absolute bottom-5 left-5 project-signal">MAP / 4.82 m² / 98.4%</div></>}
       {type === 'balance' && <><div className="balance-bot" /><div className="balance-platform" /><div className="absolute bottom-5 left-5 project-signal">ANGLE / +0.018° / PID LOOP</div></>}
+      {type === 'mnist' && (
+        <div className="mnist-classifier">
+          <div className="mnist-grid">{Array.from({ length: 25 }, (_, index) => <span key={index} className={`mnist-cell shade-${(index * 3) % 5}`} />)}</div>
+          <div className="mnist-arrow">→</div>
+          <div className="mnist-output"><strong>7</strong><span>0 — 9 / SOFTMAX</span></div>
+        </div>
+      )}
       <div className="absolute bottom-4 right-4 project-signal">● SIMULATION READY</div>
     </div>
   );
@@ -410,7 +427,7 @@ function Contact() {
           <h2 className="display-heading text-5xl font-semibold sm:text-6xl">Have a hard<br /><span className="text-primary">problem?</span></h2>
           <p className="mt-7 max-w-sm leading-7 text-muted-foreground">I’m open to internships, research, competitions, graduate opportunities, and conversations about robots that should exist.</p>
           <div className="mt-9 space-y-3">
-            <a href="mailto:khalid.hawari@example.com" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-email"><Mail size={16} className="text-primary" /> khalid.hawari@example.com</a>
+            <a href="mailto:khalidhawari763@gmail.com" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-email"><Mail size={16} className="text-primary" /> khalidhawari763@gmail.com</a>
             <a href="https://www.linkedin.com/in/khalid-hawari-b883a8358" target="_blank" rel="noreferrer" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-linkedin"><Linkedin size={16} className="text-primary" /> linkedin.com/in/khalid-hawari-b883a8358</a>
           </div>
         </div>
@@ -462,7 +479,7 @@ function Home() {
       <Header dark={dark} onTheme={() => setDark((value) => !value)} menuOpen={menuOpen} onMenu={() => setMenuOpen((value) => !value)} />
       <main>
         <Hero />
-        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">03</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
+        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
         <About /><Skills /><Projects /><Journey /><Credentials /><Contact />
       </main>
       <Footer />
