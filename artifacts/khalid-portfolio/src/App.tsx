@@ -338,7 +338,7 @@ function Projects() {
                     <button type="button" onClick={() => setSelected(selected === project.id ? null : project.id)} className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-foreground transition-colors hover:text-primary" data-testid={`button-project-details-${project.id}`}>
                       {selected === project.id ? 'Close brief' : 'Inspect project'} <ChevronDown size={14} className={selected === project.id ? 'rotate-180 transition-transform' : 'transition-transform'} />
                     </button>
-                    <a href="https://github.com/khalidhawari" target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-muted-foreground transition-colors hover:text-primary" data-testid={`link-project-github-${project.id}`}>GitHub placeholder <ExternalLink size={13} /></a>
+                    <a href="https://github.com/khalidhawari763-alt" target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-muted-foreground transition-colors hover:text-primary" data-testid={`link-project-github-${project.id}`}>GitHub <ExternalLink size={13} /></a>
                   </div>
                 </div>
               </div>
@@ -368,7 +368,7 @@ function Journey() {
           ))}
           <div className="panel mt-14 flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between">
             <div><p className="eyebrow">Activity / github</p><p className="mt-2 text-sm text-muted-foreground">Technical activity will live here as the work evolves.</p></div>
-            <a href="https://github.com/khalidhawari" target="_blank" rel="noreferrer" className="button-quiet focus-ring shrink-0" data-testid="link-github-activity">View profile <Github size={15} /></a>
+            <a href="https://github.com/khalidhawari763-alt" target="_blank" rel="noreferrer" className="button-quiet focus-ring shrink-0" data-testid="link-github-activity">View profile <Github size={15} /></a>
           </div>
         </div>
       </div>
@@ -411,7 +411,7 @@ function Contact() {
           <p className="mt-7 max-w-sm leading-7 text-muted-foreground">I’m open to internships, research, competitions, graduate opportunities, and conversations about robots that should exist.</p>
           <div className="mt-9 space-y-3">
             <a href="mailto:khalid.hawari@example.com" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-email"><Mail size={16} className="text-primary" /> khalid.hawari@example.com</a>
-            <a href="https://www.linkedin.com/in/khalidhawari" target="_blank" rel="noreferrer" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-linkedin"><Linkedin size={16} className="text-primary" /> linkedin.com/in/khalidhawari</a>
+            <a href="https://www.linkedin.com/in/khalid-hawari-b883a8358" target="_blank" rel="noreferrer" className="focus-ring flex items-center gap-3 font-mono text-xs text-foreground hover:text-primary" data-testid="link-linkedin"><Linkedin size={16} className="text-primary" /> linkedin.com/in/khalid-hawari-b883a8358</a>
           </div>
         </div>
         <div className="panel p-5 sm:p-8 reveal reveal-delay-1">
