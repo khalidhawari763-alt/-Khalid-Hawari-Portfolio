@@ -76,6 +76,7 @@ const projects = [
     detail: 'The UTF-16 CSV workflow covers lowercasing, URL and email removal, non-letter cleanup, tokenization, padding, and an embedding plus LSTM model with a dense binary output. The SMS Spam Collection Dataset contains 5,572 messages: 4,825 ham and 747 spam. The test set reached approximately 86.6% accuracy with 0.395 loss. Requirements include Python 3.11+, TensorFlow, Pandas, Seaborn, NumPy, and Matplotlib; run preprocess.py, then train_model.py.',
     tags: ['TensorFlow', 'LSTM', 'Pandas', 'NumPy'],
     visual: 'spam',
+    github: 'https://github.com/khalidhawari763-alt/spam-email-detector',
   },
   {
     id: 'amr',
@@ -86,6 +87,7 @@ const projects = [
     detail: 'The AMR project focuses on the seams between algorithms and hardware: sensor fusion, map quality, path planning, and safe recovery when the real world disagrees with the plan.',
     tags: ['SLAM', 'Navigation2', 'LiDAR', 'ROS 2'],
     visual: 'amr',
+    github: 'https://github.com/khalidhawari763-alt',
   },
   {
     id: 'balance',
@@ -96,6 +98,7 @@ const projects = [
     detail: 'This project is a practical study in control. An IMU feeds the balance loop while motor commands respond to the measured tilt, bringing together embedded code, mechanical intuition, and disciplined tuning.',
     tags: ['C++', 'IMU', 'PID control', 'Embedded'],
     visual: 'balance',
+    github: 'https://github.com/khalidhawari763-alt/self_balance_robot',
   },
   {
     id: 'mnist-tensorflow',
@@ -106,6 +109,7 @@ const projects = [
     detail: 'The model flattens each 28×28 grayscale image into a vector, passes it through a 128-neuron ReLU layer, and predicts 10 classes with a softmax output. It uses Adam, sparse categorical crossentropy, 10 epochs, and a batch size of 32, reaching approximately 99.7% train accuracy and 97.9% test accuracy. Error analysis visualizes wrong predictions, with most confusion between similar digits such as 2 and 7, 3 and 8, and 5 and 6. Accuracy and loss plots are saved in plots/accuracy.png and plots/loss.png, while wrong predictions are saved as plots/wrong_*.png.',
     tags: ['TensorFlow', 'MNIST', 'Python', 'Matplotlib'],
     visual: 'mnist',
+    github: 'https://github.com/khalidhawari763-alt/MNIST_TensorFlow_Project',
   },
 ] as const;
 
@@ -356,7 +360,7 @@ function Projects() {
                     <button type="button" onClick={() => setSelected(selected === project.id ? null : project.id)} className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-foreground transition-colors hover:text-primary" data-testid={`button-project-details-${project.id}`}>
                       {selected === project.id ? 'Close brief' : 'Inspect project'} <ChevronDown size={14} className={selected === project.id ? 'rotate-180 transition-transform' : 'transition-transform'} />
                     </button>
-                    <a href="https://github.com/khalidhawari763-alt" target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-muted-foreground transition-colors hover:text-primary" data-testid={`link-project-github-${project.id}`}>GitHub <ExternalLink size={13} /></a>
+                    <a href={project.github ?? 'https://github.com/khalidhawari763-alt'} target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.15em] text-muted-foreground transition-colors hover:text-primary" data-testid={`link-project-github-${project.id}`}>GitHub <ExternalLink size={13} /></a>
                   </div>
                 </div>
               </div>
