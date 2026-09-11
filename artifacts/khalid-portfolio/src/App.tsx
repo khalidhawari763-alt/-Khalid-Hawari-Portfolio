@@ -132,8 +132,8 @@ function useReveal() {
 
 function MetaTags() {
   useEffect(() => {
-    document.title = 'Khalid Hawari — AI & Robotics Engineering';
-    const description = 'Portfolio of Khalid Hawari, an AI and Robotics Engineering student from Jordan building intelligent machines with ROS 2, embedded systems, and simulation.';
+    document.title = 'Khalid Hawari — Robotics Science Student';
+    const description = 'Portfolio of Khalid Hawari, a Robotics Science student from Jordan building intelligent machines with ROS 2, embedded systems, AI, and simulation.';
     const setMeta = (name: string, content: string, property = false) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
       let tag = document.head.querySelector(selector) as HTMLMetaElement | null;
@@ -146,7 +146,7 @@ function MetaTags() {
       tag.content = content;
     };
     setMeta('description', description);
-    setMeta('og:title', 'Khalid Hawari — AI & Robotics Engineering', true);
+    setMeta('og:title', 'Khalid Hawari — Robotics Science Student', true);
     setMeta('og:description', description, true);
     setMeta('og:type', 'website', true);
     setMeta('og:url', window.location.href, true);
@@ -246,13 +246,13 @@ function Hero() {
         <div className="reveal">
           <div className="mb-8 flex items-center gap-3">
             <span className="h-px w-9 bg-primary" />
-            <span className="eyebrow">AI & Robotics Engineering / Jordan</span>
+            <span className="eyebrow">Robotics Science / Jordan</span>
           </div>
           <h1 className="display-heading max-w-3xl text-[clamp(3.6rem,9vw,7.6rem)] font-semibold">
             Building machines<br /><span className="text-primary">with a point of view.</span>
           </h1>
           <p className="copy-muted mt-8 max-w-xl text-lg leading-8">
-            I’m Khalid Hawari — an AI & Robotics Engineering student turning algorithms, electronics, and motion into systems that can do something in the real world.
+            I’m Khalid Hawari — a Robotics Science student turning algorithms, electronics, and motion into systems that can do something in the real world.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a href="#projects" className="button-primary focus-ring" data-testid="link-hero-projects">Explore the work <ArrowDown size={15} /></a>
@@ -399,7 +399,7 @@ function Credentials() {
       <div className="max-frame grid gap-8 md:grid-cols-2">
         <div className="flex gap-5 reveal">
           <div className="grid h-11 w-11 shrink-0 place-items-center border border-primary/40 bg-primary/10 text-primary"><GraduationCap size={20} /></div>
-          <div><p className="eyebrow">Education</p><h3 className="mt-2 text-xl font-medium">Jordan University of Science and Technology</h3><p className="mt-2 text-sm text-muted-foreground">AI & Robotics Engineering · Jordan</p></div>
+          <div><p className="eyebrow">Education</p><h3 className="mt-2 text-xl font-medium">Jordan University of Science and Technology</h3><p className="mt-2 text-sm text-muted-foreground">B.Sc. Robotics Science · Jordan</p></div>
         </div>
         <div className="flex gap-5 reveal reveal-delay-1">
           <div className="grid h-11 w-11 shrink-0 place-items-center border border-accent/50 bg-accent/10 text-accent"><Check size={20} /></div>
