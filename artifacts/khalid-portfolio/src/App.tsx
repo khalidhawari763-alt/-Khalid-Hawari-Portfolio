@@ -24,6 +24,7 @@ import {
   X,
 } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useCreateContactMessage } from '@workspace/api-client-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -412,11 +413,22 @@ function Credentials() {
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const contactMessage = useCreateContactMessage();
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSent(true);
-    setForm({ name: '', email: '', message: '' });
+    setSendError(false);
+    contactMessage.mutate(
+      { data: form },
+      {
+        onSuccess: () => {
+          setSent(true);
+          setForm({ name: '', email: '', message: '' });
+        },
+        onError: () => setSendError(true),
+      },
+    );
   };
   return (
     <section id="contact" className="relative py-24 sm:py-32">
@@ -435,17 +447,18 @@ function Contact() {
           {sent ? (
             <div className="flex min-h-[320px] flex-col items-start justify-center">
               <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground"><Check size={22} /></div>
-              <p className="eyebrow mt-7">Transmission received</p><h3 className="mt-3 text-3xl font-medium">Thanks for reaching out.</h3><p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">This frontend form is ready for a backend connection. For now, your message has been staged locally.</p>
-              <button type="button" onClick={() => setSent(false)} className="button-quiet focus-ring mt-7" data-testid="button-send-another">Send another <ArrowUpRight size={14} /></button>
+              <p className="eyebrow mt-7">Message received</p><h3 className="mt-3 text-3xl font-medium">Thanks for reaching out.</h3><p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">Your message has been saved successfully. I’ll review it and get back to you soon.</p>
+              <button type="button" onClick={() => { setSent(false); setSendError(false); }} className="button-quiet focus-ring mt-7" data-testid="button-send-another">Send another <ArrowUpRight size={14} /></button>
             </div>
           ) : (
             <form onSubmit={submit} className="space-y-5" aria-label="Contact form">
               <div className="grid gap-5 sm:grid-cols-2">
-                <label className="font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Name<input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} className="form-field mt-2" placeholder="Your name" data-testid="input-contact-name" /></label>
-                <label className="font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Email<input required type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} className="form-field mt-2" placeholder="you@domain.com" data-testid="input-contact-email" /></label>
+                <label className="font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Name<input required maxLength={120} value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} className="form-field mt-2" placeholder="Your name" data-testid="input-contact-name" /></label>
+                <label className="font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Email<input required maxLength={254} type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} className="form-field mt-2" placeholder="you@domain.com" data-testid="input-contact-email" /></label>
               </div>
-              <label className="block font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Message<textarea required value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} className="form-field mt-2 min-h-[150px] resize-y" placeholder="What are you building?" data-testid="input-contact-message" /></label>
-              <div className="flex items-center justify-between gap-4 border-t border-border pt-5"><span className="font-mono text-[10px] text-muted-foreground">No pitch deck required.</span><button type="submit" className="button-primary focus-ring" data-testid="button-submit-contact">Send message <Send size={14} /></button></div>
+              <label className="block font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">Message<textarea required maxLength={5000} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} className="form-field mt-2 min-h-[150px] resize-y" placeholder="What are you building?" data-testid="input-contact-message" /></label>
+              {sendError && <p className="text-sm leading-6 text-destructive" role="alert">Your message could not be sent right now. Please try again or email me directly.</p>}
+              <div className="flex items-center justify-between gap-4 border-t border-border pt-5"><span className="font-mono text-[10px] text-muted-foreground">No pitch deck required.</span><button type="submit" disabled={contactMessage.isPending} className="button-primary focus-ring disabled:cursor-not-allowed disabled:opacity-60" data-testid="button-submit-contact">{contactMessage.isPending ? 'Sending…' : 'Send message'} <Send size={14} /></button></div>
             </form>
           )}
         </div>
