@@ -4,6 +4,7 @@ import {
   CreateContactMessageBody,
   CreateContactMessageResponse,
 } from "@workspace/api-zod";
+import { sendContactNotification } from "../lib/resend";
 
 const router: IRouter = Router();
 
@@ -22,6 +23,19 @@ router.post("/contact-messages", async (req, res): Promise<void> => {
       id: contactMessagesTable.id,
       createdAt: contactMessagesTable.createdAt,
     });
+
+  try {
+    await sendContactNotification({
+      id: contactMessage.id,
+      ...parsed.data,
+    });
+    req.log.info({ contactMessageId: contactMessage.id }, "Contact notification sent");
+  } catch (error) {
+    req.log.error(
+      { err: error, contactMessageId: contactMessage.id },
+      "Contact notification failed after message was saved",
+    );
+  }
 
   res.status(201).json(CreateContactMessageResponse.parse(contactMessage));
 });
