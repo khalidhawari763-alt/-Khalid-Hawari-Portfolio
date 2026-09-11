@@ -466,12 +466,12 @@ function Footer() {
 }
 
 function Home() {
-  const [dark, setDark] = useState(() => localStorage.getItem('khalid-theme') !== 'light');
+  const [dark, setDark] = useState(() => localStorage.getItem('khalid-portfolio-theme') === 'dark');
   const [menuOpen, setMenuOpen] = useState(false);
   useReveal();
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark);
-    localStorage.setItem('khalid-theme', dark ? 'dark' : 'light');
+    localStorage.setItem('khalid-portfolio-theme', dark ? 'dark' : 'light');
   }, [dark]);
   return (
     <div className={`portfolio-shell site-grid ${dark ? 'dark' : ''}`}>
