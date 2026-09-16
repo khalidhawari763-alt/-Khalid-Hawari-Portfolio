@@ -111,6 +111,17 @@ const projects = [
     visual: 'mnist',
     github: 'https://github.com/khalidhawari763-alt/MNIST_TensorFlow_Project',
   },
+  {
+    id: 'house-price-prediction',
+    number: '05',
+    name: 'House Price Prediction',
+    type: 'Machine learning regression',
+    summary: 'An ensemble machine learning project that predicts house prices using Random Forest, XGBoost, and averaged ensemble predictions.',
+    detail: 'The project uses the Kaggle House Prices: Advanced Regression Techniques dataset with 1,460 training houses and 1,459 test houses. The workflow includes data cleaning, numerical feature selection, correlation analysis, Random Forest regression, XGBoost regression, and ensemble prediction. The model achieved a 0.13 Kaggle score on the competition leaderboard.',
+    tags: ['Python', 'Scikit-learn', 'XGBoost', 'Pandas'],
+    visual: 'house',
+    github: 'https://github.com/khalidhawari763-alt/House-Prices-Prediction-Random-Forest-XGBoost',
+  },
 ] as const;
 
 const journey = [
@@ -217,7 +228,7 @@ function SectionHeading({ kicker, title, text, id }: { kicker: string; title: Re
 }
 
 function ProjectVisual({ type }: { type: string }) {
-  const visualNumber = type === 'spam' ? '01' : type === 'amr' ? '02' : type === 'balance' ? '03' : '04';
+  const visualNumber = type === 'spam' ? '01' : type === 'amr' ? '02' : type === 'balance' ? '03' : type === 'mnist' ? '04': '05';
   return (
     <div className={`project-visual visual-${type}`} aria-label={`${type} technical placeholder visual`} role="img">
       <div className="absolute left-4 top-4 project-signal">SYS.VISUAL / {visualNumber}</div>
@@ -237,6 +248,25 @@ function ProjectVisual({ type }: { type: string }) {
           <div className="mnist-grid">{Array.from({ length: 25 }, (_, index) => <span key={index} className={`mnist-cell shade-${(index * 3) % 5}`} />)}</div>
           <div className="mnist-arrow">→</div>
           <div className="mnist-output"><strong>7</strong><span>0 — 9 / SOFTMAX</span></div>
+        </div>
+      )}
+            {type === 'house' && (
+        <div className="house-prediction">
+          <div className="house-chart">
+            <div className="house-bar bar-1" />
+            <div className="house-bar bar-2" />
+            <div className="house-bar bar-3" />
+            <div className="house-bar bar-4" />
+            <div className="house-bar bar-5" />
+          </div>
+
+          <div className="house-arrow">→</div>
+
+          <div className="house-output">
+            <strong>$</strong>
+            <span>PREDICTED PRICE</span>
+            <small>RF + XGBOOST</small>
+          </div>
         </div>
       )}
       <div className="absolute bottom-4 right-4 project-signal">● SIMULATION READY</div>
@@ -496,7 +526,7 @@ function Home() {
       <Header dark={dark} onTheme={() => setDark((value) => !value)} menuOpen={menuOpen} onMenu={() => setMenuOpen((value) => !value)} />
       <main>
         <Hero />
-        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
+        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">05</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
         <About /><Skills /><Projects /><Journey /><Credentials /><Contact />
       </main>
       <Footer />
