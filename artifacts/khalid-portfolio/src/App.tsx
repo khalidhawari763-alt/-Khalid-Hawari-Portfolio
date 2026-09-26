@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import {
-   AlertTriangle,
+  AlertTriangle,
   ArrowDown,
   ArrowUpRight,
   BrainCircuit,
