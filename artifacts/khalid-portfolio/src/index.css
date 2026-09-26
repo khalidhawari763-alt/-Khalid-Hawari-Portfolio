@@ -370,6 +370,91 @@
   font: 7px var(--app-font-mono);
   letter-spacing: .1em;
 }
+.visual-iforest {
+  position: absolute;
+  inset: 16% 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6%;
+}
+
+.iforest-chart {
+  width: 36%;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid #83eff566;
+  background: #132535;
+  position: relative;
+}
+.iforest-chart::before {
+  content: 'SENSOR FEATURES';
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: #94a8b8;
+  font: 8px var(--app-font-mono);
+  letter-spacing: .12em;
+}
+.iforest-bar { width: 14%; background: #83eff5; box-shadow: 0 0 12px #83eff533; transition: height .3s ease; }
+.bar-vib { height: 52%; }
+.bar-temp { height: 38%; }
+.bar-current { height: 70%; }
+.bar-pressure { height: 46%; }
+.bar-speed { height: 63%; background: #f7aa55; }
+
+.iforest-arrow {
+  color: #f7aa55;
+  font: 20px var(--app-font-mono);
+  text-align: center;
+  line-height: 1.2;
+}
+.iforest-arrow small {
+  display: block;
+  color: #94a8b8;
+  font: 7px var(--app-font-mono);
+  letter-spacing: .08em;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.iforest-output {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-width: 135px;
+  text-align: center;
+}
+.iforest-output strong {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid #f7aa55;
+  color: #f7aa55;
+  font: 26px var(--app-font-sans);
+  box-shadow: 0 0 28px #f7aa5522;
+}
+.iforest-output span {
+  color: #83eff5;
+  font: 9px var(--app-font-mono);
+  letter-spacing: .12em;
+}
+.iforest-metrics { display: flex; gap: 6px; }
+.iforest-metrics div {
+  border: 1px solid #83eff566;
+  padding: 5px 6px;
+  color: #94a8b8;
+  font: 7px var(--app-font-mono);
+  letter-spacing: .04em;
+}
+
+
 .tag { display: inline-flex; align-items: center; padding: .3rem .5rem; border: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); border-radius: .2rem; font-family: var(--app-font-mono); font-size: .6rem; letter-spacing: .01em; }
 .journey-line { position: absolute; top: 18px; bottom: 18px; left: 7px; width: 1px; background: hsl(var(--border)); }
 .journey-dot { position: relative; z-index: 1; width: 15px; height: 15px; border: 2px solid hsl(var(--primary)); background: hsl(var(--background)); border-radius: 50%; }
@@ -404,6 +489,11 @@
     gap: 8px;
     font-size: 6px;
   }
+  .visual-iforest { inset: 14% 5%; gap: 3%; }
+  .iforest-chart { width: 40%; height: 120px; }
+  .iforest-output { min-width: 105px; }
+  .iforest-output strong { width: 56px; height: 56px; font-size: 20px; }
+  .iforest-metrics { font-size: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
