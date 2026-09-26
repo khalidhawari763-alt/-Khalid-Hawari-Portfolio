@@ -271,6 +271,105 @@
   font: 8px var(--app-font-mono);
   letter-spacing: .1em;
 }
+.sensor-anomaly {
+  position: absolute;
+  inset: 16% 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7%;
+}
+
+.sensor-chart {
+  position: relative;
+  width: 55%;
+  height: 145px;
+  border: 1px solid #83eff566;
+  background: #132535;
+  overflow: hidden;
+}
+
+.sensor-chart::before {
+  content: 'SENSOR SIGNALS';
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: #94a8b8;
+  font: 8px var(--app-font-mono);
+  letter-spacing: .12em;
+}
+
+.sensor-chart::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#3c8c9e22 1px, transparent 1px),
+    linear-gradient(90deg, #3c8c9e22 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.sensor-line {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  height: 2px;
+  background: #83eff5;
+  box-shadow: 0 0 8px #83eff555;
+  transform-origin: left;
+}
+
+.sensor-line-1 {
+  top: 38%;
+  transform: rotate(2deg);
+}
+
+.sensor-line-2 {
+  top: 50%;
+  transform: rotate(-5deg);
+  opacity: .65;
+}
+
+.sensor-line-3 {
+  top: 62%;
+  transform: rotate(4deg);
+  opacity: .5;
+}
+
+.sensor-line-4 {
+  top: 47%;
+  transform: rotate(15deg);
+  background: #f7aa55;
+  box-shadow: 0 0 12px #f7aa5544;
+  opacity: .95;
+}
+
+.sensor-status {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-width: 125px;
+  text-align: center;
+  color: #f7aa55;
+  font: 9px var(--app-font-mono);
+  letter-spacing: .12em;
+}
+
+.sensor-status svg {
+  filter: drop-shadow(0 0 8px #f7aa55);
+}
+
+.sensor-metrics {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  display: flex;
+  gap: 16px;
+  color: #94a8b8;
+  font: 7px var(--app-font-mono);
+  letter-spacing: .1em;
+}
 .tag { display: inline-flex; align-items: center; padding: .3rem .5rem; border: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); border-radius: .2rem; font-family: var(--app-font-mono); font-size: .6rem; letter-spacing: .01em; }
 .journey-line { position: absolute; top: 18px; bottom: 18px; left: 7px; width: 1px; background: hsl(var(--border)); }
 .journey-dot { position: relative; z-index: 1; width: 15px; height: 15px; border: 2px solid hsl(var(--primary)); background: hsl(var(--background)); border-radius: 50%; }
@@ -286,6 +385,25 @@
   .hero-orbit { width: min(75vw, 310px); margin-inline: auto; }
   .stat-cell:nth-child(3) { border-left: 0; }
   .project-visual { min-height: 220px; }
+    .sensor-anomaly {
+    inset: 14% 6%;
+    gap: 4%;
+  }
+
+  .sensor-chart {
+    width: 58%;
+    height: 125px;
+  }
+
+  .sensor-status {
+    min-width: 95px;
+    font-size: 7px;
+  }
+
+  .sensor-metrics {
+    gap: 8px;
+    font-size: 6px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
