@@ -239,7 +239,7 @@ function SectionHeading({ kicker, title, text, id }: { kicker: string; title: Re
 }
 
 function ProjectVisual({ type }: { type: string }) {
-  const visualNumber = type === 'spam' ? '01' : type === 'amr' ? '02' : type === 'balance' ? '03' : type === 'mnist' ? '04': '05';
+  const visualNumber = type === 'spam' ? '01' : type === 'amr' ? '02' : type === 'balance' ? '03' : type === 'mnist' ? '04': type === 'house' ? '05' : '06';
   return (
     <div className={`project-visual visual-${type}`} aria-label={`${type} technical placeholder visual`} role="img">
       <div className="absolute left-4 top-4 project-signal">SYS.VISUAL / {visualNumber}</div>
@@ -280,6 +280,25 @@ function ProjectVisual({ type }: { type: string }) {
           </div>
         </div>
       )}
+      {type === 'sensor' && (
+  <div className="sensor-anomaly">
+    <div className="sensor-chart">
+      <div className="sensor-line sensor-line-1" />
+      <div className="sensor-line sensor-line-2" />
+      <div className="sensor-line sensor-line-3" />
+      <div className="sensor-line sensor-line-4" />
+      <div className="sensor-metrics">
+        <span>P 14.17%</span>
+        <span>R 24.31%</span>
+        <span>F1 17.90%</span>
+      </div>
+    </div>
+    <div className="sensor-status">
+      <AlertTriangle size={26} />
+      ANOMALY FLAGGED
+    </div>
+  </div>
+)}
       <div className="absolute bottom-4 right-4 project-signal">● SIMULATION READY</div>
     </div>
   );
@@ -391,7 +410,7 @@ function Projects() {
                 <ProjectVisual type={project.visual} />
                 <div className="flex flex-col justify-between p-6 sm:p-9">
                   <div>
-                    <div className="mb-7 flex items-center justify-between gap-4"><span className="eyebrow">Project {project.number}</span><span className="font-mono text-[10px] text-muted-foreground">2024—25</span></div>
+                    <div className="mb-7 flex items-center justify-between gap-4"><span className="eyebrow">Project {project.number}</span><span className="font-mono text-[10px] text-muted-foreground">2025—26</span></div>
                     <h3 className="display-heading text-4xl font-semibold sm:text-5xl">{project.name}</h3>
                     <p className="mt-2 font-mono text-xs uppercase tracking-[.12em] text-primary">{project.type}</p>
                     <p className="mt-6 max-w-lg leading-7 text-muted-foreground">{project.summary}</p>
@@ -537,7 +556,7 @@ function Home() {
       <Header dark={dark} onTheme={() => setDark((value) => !value)} menuOpen={menuOpen} onMenu={() => setMenuOpen((value) => !value)} />
       <main>
         <Hero />
-        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">05</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
+        <div className="stat-strip"><div className="max-frame grid grid-cols-2 sm:grid-cols-4"><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">06</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Featured builds</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">04</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">System layers</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">01</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">AI-900 certified</p></div><div className="stat-cell px-3 py-5 sm:px-5"><p className="font-mono text-2xl text-primary">JO</p><p className="mt-1 text-[10px] uppercase tracking-[.13em] text-muted-foreground">Operating from Jordan</p></div></div></div>
         <About /><Skills /><Projects /><Journey /><Credentials /><Contact />
       </main>
       <Footer />
