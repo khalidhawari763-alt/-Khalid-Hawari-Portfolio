@@ -131,7 +131,7 @@ const projects = [
     detail: 'The project uses five machine sensor features: vibration, bearing temperature, motor current, discharge pressure, and rotor speed. Missing values are handled using median imputation, while StandardScaler normalizes the sensor data. Isolation Forest is trained only on normal operating data and evaluated against unseen normal and failure samples. The final model uses 500 trees, a contamination value of 0.03, max_samples of 2048, and all available features. On the test set, the model achieved 14.17% precision, 24.31% recall, and 17.90% F1-score for detecting failures.',
     tags: ['Python', 'Scikit-learn', 'Isolation Forest', 'Anomaly Detection'],
     visual: 'sensor',
-    github: 'https://github.com/khalidhawari763-alt',
+    github: 'https://github.com/khalidhawari763-alt/anomaly_detection',
   },
 ] as const;
 
