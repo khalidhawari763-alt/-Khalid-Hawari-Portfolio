@@ -19,7 +19,7 @@ export async function sendContactNotification({
 }: ContactNotification): Promise<void> {
   try {
     const data = await resend.emails.send({
-      from: "Khalid Hawari Portfolio <contact@yourdomain.com>", // IMPORTANT: Replace with your verified domain email
+      from: "Khalid Hawari Portfolio <onboarding@resend.dev>", // Using Resend Test Mode
       to: [notificationRecipient],
       reply_to: email,
       subject: `New portfolio message from ${name}`,
