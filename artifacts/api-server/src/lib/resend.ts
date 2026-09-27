@@ -1,5 +1,7 @@
-import { ReplitConnectors } from "@replit/connectors-sdk";
+import { Resend } from 'resend';
 
+// Initialize Resend with your API Key from environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 const notificationRecipient = "khalidhawari763@gmail.com";
 
 type ContactNotification = {
@@ -15,14 +17,9 @@ export async function sendContactNotification({
   email,
   message,
 }: ContactNotification): Promise<void> {
-  const connectors = new ReplitConnectors();
-  const response = await connectors.proxy("resend", "/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "Khalid Hawari Portfolio <onboarding@resend.dev>",
+  try {
+    const data = await resend.emails.send({
+      from: "Khalid Hawari Portfolio <contact@yourdomain.com>", // IMPORTANT: Replace with your verified domain email
       to: [notificationRecipient],
       reply_to: email,
       subject: `New portfolio message from ${name}`,
@@ -33,11 +30,14 @@ export async function sendContactNotification({
         "",
         message,
       ].join("\n"),
-    }),
-  });
+    });
 
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(`Resend returned ${response.status}: ${detail.slice(0, 300)}`);
+    if (!data.error) {
+      // Success
+    } else {
+      throw new Error(`Resend API error: ${data.error.message}`);
+    }
+  } catch (error) {
+    throw new Error(`Resend error: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
